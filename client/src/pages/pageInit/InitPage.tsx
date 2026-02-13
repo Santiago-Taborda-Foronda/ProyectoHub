@@ -1,11 +1,24 @@
-import React from 'react'
+import React from 'react';
+import LoginForm from '../../Components/auth/LoginForm';
+import fondoImage from '../../assets/images/fondo-proyectos.png';
 
 const InitPage: React.FC = () => {
   return (
-    <div>
-      <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut facilis enim minima cupiditate at nemo saepe error inventore provident, quisquam blanditiis consequatur dolores asperiores id? Rem officiis odio tempora dolore.</h1>
+    <div 
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${fondoImage})`
+      }}
+    >
+      {/* Capa oscura semitransparente para mejorar legibilidad */}
+      {/* <div className="absolute inset-0  bg-opacity-50"></div> */}
+      
+      {/* El formulario está por encima de la capa oscura */}
+      <div className="relative z-10">
+        <LoginForm />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default InitPage
+export default InitPage;
