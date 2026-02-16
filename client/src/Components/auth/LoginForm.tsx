@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import SocialLogin from './SocialLogin';
 
 const LoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="bg-white p-8 rounded-xl w-400px shadow-lg">
+    <div className="bg-white p-8 rounded-xl w-[400px] shadow-lg">
       <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
         ProyectHub
       </h1>
@@ -43,9 +44,12 @@ const LoginForm: React.FC = () => {
           Mostrar contraseña
         </label>
         
-        <button className="text-sm text-blue-600 hover:underline">
-          Olvidaste tu contraseña?
-        </button>
+       <Link
+        to="/forgot-password"
+        className="text-sm text-blue-600 hover:underline"
+      >
+        ¿Olvidaste tu contraseña?
+      </Link>
       </div>
 
       <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">
