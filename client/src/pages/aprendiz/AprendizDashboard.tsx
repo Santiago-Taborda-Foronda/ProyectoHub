@@ -1,11 +1,36 @@
-import React from 'react'
+// src/pages/aprendiz/AprendizDashboard.tsx
+import React from "react";
+import AprendizSummaryCards from "../../Components/aprendiz/AprendizSummaryCards";
+import ProyectoDesarrollo from "../../Components/aprendiz/ProyectoDesarrollo";
+import EntregasPendientes from "../../Components/aprendiz/EntregasPendientes";
+import NotificacionesList from "../../Components/aprendiz/NotificacionesList";
 
 const AprendizDashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-3xl font-bold text-gray-800">Panel de Aprendiz</h1>
-    </div>
-  )
-}
+    <div>
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-800">
+          Bienvenido de nuevo, Aprendiz
+        </h1>
+        <p className="text-gray-600">
+          Aquí tienes un resumen de tu progreso actual.
+        </p>
+      </div>
 
-export default AprendizDashboard
+      {/* Summary Cards */}
+      <AprendizSummaryCards />
+
+      {/* Grid de dos columnas para Proyecto en desarrollo y Entregas pendientes */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <ProyectoDesarrollo />
+        <EntregasPendientes />
+      </div>
+
+      {/* Lista de notificaciones */}
+      <NotificacionesList />
+    </div>
+  );
+};
+
+export default AprendizDashboard;

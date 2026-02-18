@@ -8,13 +8,20 @@ export type MenuItem = {
 
 export const MENUS = {
   admin: [
-    { label: "Dashboard", icon: "home", path: "/admin" },
-    { label: "Usuarios", icon: "users", path: "/admin/users" },
-    { label: "Reportes", icon: "chart", path: "/admin/reports" }
+    { label: "Administrador Dashboard", icon: "home", path: "/admin" },
+    { label: "Gestion de Usuarios", icon: "users", path: "/admin/users" },
+    { label: "Banco de Proyectos", icon: "users", path: "/admin/users" },
+    { label: "Gestion de Proyectos", icon: "users", path: "/admin/users" },
+    { label: "Gestion Academica", icon: "users", path: "/admin/users" },
+    { label: "Gestion Documental", icon: "users", path: "/admin/users" },
+    { label: "Reportes y Seguimiento", icon: "chart", path: "/admin/reports" },
+    { label: "Configuracion del Sistema", icon: "users", path: "/admin/users" },
+    { label: "Auditoria y Trazabilidad", icon: "users", path: "/admin/users" },
+    
   ],
 
   instructor: [
-    { label: "Instructor", icon: "home", path: "/instructor" },
+    { label: "Instructor Dashboard", icon: "home", path: "/instructor" },
     { label: "Mis Fichas", icon: "users", path: "/instructor/fichas" },
     { label: "Mis Proyectos", icon: "folder", path: "/instructor/proyectos" },
     { label: "Seguimiento Académico", icon: "book", path: "/instructor/seguimiento" },
@@ -24,8 +31,10 @@ export const MENUS = {
   ],
 
   aprendiz: [
-    { label: "Aprendiz", icon: "home", path: "/aprendiz" },
-    { label: "Mis Proyectos", icon: "folder", path: "/aprendiz/proyectos" },
-    { label: "Entregables", icon: "file", path: "/aprendiz/entregables" }
+    { label: "Aprendiz Dashboard", icon: "home", path: "/aprendiz" },
+    { label: "Solicitud de  Proyecto", icon: "folder", path: "/aprendiz/proyectos" },
+    { label: "Mis Proyectos", icon: "file", path: "/aprendiz/entregables" },
+    { label: "Entregable", icon: "file", path: "/aprendiz/entregables" },
+    { label: "Banco de Proyectos", icon: "file", path: "/aprendiz/entregables" },
   ]
 };

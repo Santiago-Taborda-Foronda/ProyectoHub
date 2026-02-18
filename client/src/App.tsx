@@ -11,7 +11,7 @@ import './App.css'
 function App() {
   // Simulación de autenticación - en un caso real vendría de un contexto/auth
   // Por ahora, podemos probar cambiando este valor manualmente
-  const userRole = 'instructor' // o 'admin', 'aprendiz' según lo que quieras probar
+  const userRole = 'aprendiz' // o 'admin', 'aprendiz' según lo que quieras probar
 
   return (
     <BrowserRouter>
