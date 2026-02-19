@@ -1,5 +1,4 @@
 // src/config/menus.ts
-
 export type MenuItem = {
   label: string;
   icon: string;
@@ -8,20 +7,18 @@ export type MenuItem = {
 
 export const MENUS = {
   admin: [
-    { label: "Administrador Dashboard", icon: "home", path: "/admin" },
-    { label: "Gestion de Usuarios", icon: "users", path: "/admin/users" },
-    { label: "Banco de Proyectos", icon: "users", path: "/admin/users" },
-    { label: "Gestion de Proyectos", icon: "users", path: "/admin/users" },
-    { label: "Gestion Academica", icon: "users", path: "/admin/users" },
-    { label: "Gestion Documental", icon: "users", path: "/admin/users" },
-    { label: "Reportes y Seguimiento", icon: "chart", path: "/admin/reports" },
-    { label: "Configuracion del Sistema", icon: "users", path: "/admin/users" },
-    { label: "Auditoria y Trazabilidad", icon: "users", path: "/admin/users" },
-    
+    { label: "Dashboard", icon: "home", path: "/admin" },
+    { label: "Gestión de Usuarios", icon: "users", path: "/admin/usuarios" },
+    { label: "Banco de Proyectos", icon: "folder", path: "/admin/banco-proyectos" },
+    { label: "Gestión de Proyectos", icon: "clipboard", path: "/admin/proyectos" },
+    { label: "Gestión Académica", icon: "book", path: "/admin/academica" },
+    { label: "Gestión Documental", icon: "file", path: "/admin/documentos" },
+    { label: "Reportes y Seguimiento", icon: "chart", path: "/admin/reportes" },
+    { label: "Configuración del Sistema", icon: "settings", path: "/admin/configuracion" },
+    { label: "Auditoría y Trazabilidad", icon: "shield", path: "/admin/auditoria" },
   ],
-
   instructor: [
-    { label: "Instructor Dashboard", icon: "home", path: "/instructor" },
+    { label: "Dashboard", icon: "home", path: "/instructor" },
     { label: "Mis Fichas", icon: "users", path: "/instructor/fichas" },
     { label: "Mis Proyectos", icon: "folder", path: "/instructor/proyectos" },
     { label: "Seguimiento Académico", icon: "book", path: "/instructor/seguimiento" },
@@ -29,12 +26,11 @@ export const MENUS = {
     { label: "Gestión Documental", icon: "file", path: "/instructor/documentos" },
     { label: "Reportes", icon: "chart", path: "/instructor/reportes" }
   ],
-
   aprendiz: [
-    { label: "Aprendiz Dashboard", icon: "home", path: "/aprendiz" },
-    { label: "Solicitud de  Proyecto", icon: "folder", path: "/aprendiz/proyectos" },
-    { label: "Mis Proyectos", icon: "file", path: "/aprendiz/entregables" },
-    { label: "Entregable", icon: "file", path: "/aprendiz/entregables" },
-    { label: "Banco de Proyectos", icon: "file", path: "/aprendiz/entregables" },
+    { label: "Dashboard", icon: "home", path: "/aprendiz" },
+    { label: "Solicitud de Proyecto", icon: "folder", path: "/aprendiz/solicitud" },
+    { label: "Mis Proyectos", icon: "clipboard", path: "/aprendiz/mis-proyectos" },
+    { label: "Entregables", icon: "file", path: "/aprendiz/entregables" },
+    { label: "Banco de Proyectos", icon: "folder", path: "/aprendiz/banco-proyectos" },
   ]
 };
