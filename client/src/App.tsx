@@ -1,4 +1,4 @@
-// src/App.tsx (versión mejorada)
+// src/App.tsx (actualizado)
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import DashboardLayout from './Components/layout/DashboardLayout'
 import InitPage from './pages/pageInit/InitPage'
@@ -6,12 +6,13 @@ import ForgotPasswordPage from './pages/pageInit/ForgotPasswordPage'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import InstructorDashboard from './pages/instructor/InstructorDashboard'
 import AprendizDashboard from './pages/aprendiz/AprendizDashboard'
+import SolicitudProyecto from './pages/aprendiz/SolicitudProyecto'
+import Entregables from './pages/aprendiz/Entregables'
+import BancoProyectos from './pages/aprendiz/BancoProyectos' // <-- Importar nueva vista
 import './App.css'
 
 function App() {
-  // Simulación de autenticación - en un caso real vendría de un contexto/auth
-  // Por ahora, podemos probar cambiando este valor manualmente
-  const userRole = 'aprendiz' // o 'admin', 'aprendiz' según lo que quieras probar
+  const userRole = 'aprendiz'
 
   return (
     <BrowserRouter>
@@ -20,11 +21,17 @@ function App() {
         <Route path="/" element={<InitPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         
-        {/* Rutas protegidas con DashboardLayout - pasamos el rol */}
+        {/* Rutas protegidas con DashboardLayout */}
         <Route path="/" element={<DashboardLayout userRole={userRole} />}>
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="instructor" element={<InstructorDashboard />} />
+          
+          {/* Rutas de Aprendiz */}
           <Route path="aprendiz" element={<AprendizDashboard />} />
+          <Route path="aprendiz/solicitud" element={<SolicitudProyecto />} />
+          <Route path="aprendiz/mis-proyectos" element={<div>Mis Proyectos</div>} />
+          <Route path="aprendiz/entregables" element={<Entregables />} />
+          <Route path="aprendiz/banco-proyectos" element={<BancoProyectos />} /> {/* <-- Nueva ruta */}
         </Route>
       </Routes>
     </BrowserRouter>

@@ -29,7 +29,7 @@ export const MENUS = {
   aprendiz: [
     { label: "Dashboard", icon: "home", path: "/aprendiz" },
     { label: "Solicitud de Proyecto", icon: "folder", path: "/aprendiz/solicitud" },
-    { label: "Mis Proyectos", icon: "clipboard", path: "/aprendiz/mis-proyectos" },
+    { label: "Mi Proyecto", icon: "clipboard", path: "/aprendiz/mis-proyectos" },
     { label: "Entregables", icon: "file", path: "/aprendiz/entregables" },
     { label: "Banco de Proyectos", icon: "folder", path: "/aprendiz/banco-proyectos" },
   ]
