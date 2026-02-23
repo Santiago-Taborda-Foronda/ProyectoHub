@@ -8,8 +8,8 @@ import InstructorDashboard from './pages/instructor/InstructorDashboard'
 import AprendizDashboard from './pages/aprendiz/AprendizDashboard'
 import SolicitudProyecto from './pages/aprendiz/SolicitudProyecto'
 import Entregables from './pages/aprendiz/Entregables'
-import BancoProyectos from './pages/aprendiz/BancoProyectos' // <-- Importar nueva vista
-import './App.css'
+import BancoProyectos from './pages/aprendiz/BancoProyectos'
+import MisProyectos from './pages/aprendiz/MisProyectos' // <-- Importar nueva vista
 
 function App() {
   const userRole = 'aprendiz'
@@ -17,11 +17,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rutas públicas sin layout */}
+        {/* Rutas públicas */}
         <Route path="/" element={<InitPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         
-        {/* Rutas protegidas con DashboardLayout */}
+        {/* Rutas protegidas */}
         <Route path="/" element={<DashboardLayout userRole={userRole} />}>
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="instructor" element={<InstructorDashboard />} />
@@ -29,9 +29,9 @@ function App() {
           {/* Rutas de Aprendiz */}
           <Route path="aprendiz" element={<AprendizDashboard />} />
           <Route path="aprendiz/solicitud" element={<SolicitudProyecto />} />
-          <Route path="aprendiz/mis-proyectos" element={<div>Mis Proyectos</div>} />
+          <Route path="aprendiz/mis-proyectos" element={<MisProyectos />} /> {/* <-- Nueva ruta */}
           <Route path="aprendiz/entregables" element={<Entregables />} />
-          <Route path="aprendiz/banco-proyectos" element={<BancoProyectos />} /> {/* <-- Nueva ruta */}
+          <Route path="aprendiz/banco-proyectos" element={<BancoProyectos />} />
         </Route>
       </Routes>
     </BrowserRouter>
