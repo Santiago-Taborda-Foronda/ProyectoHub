@@ -11,6 +11,7 @@ import Entregables from './pages/aprendiz/Entregables'
 import BancoProyectos from './pages/aprendiz/BancoProyectos'
 import MisProyectos from './pages/aprendiz/MisProyectos'
 import PlanteamientoProblema from './pages/aprendiz/documentos/PlanteamientoProblema' // <-- Importar
+import EspecificacionRequisitos from './pages/aprendiz/documentos/EspecificacionRequisitos';
 
 function App() {
   const userRole = 'aprendiz'
@@ -36,6 +37,7 @@ function App() {
           
           {/* Rutas de documentos */}
           <Route path="aprendiz/documento/planteamiento-problema" element={<PlanteamientoProblema />} />
+          <Route path="aprendiz/documento/especificacion-requisitos" element={<EspecificacionRequisitos />} />
           {/* Aquí irán las demás rutas de documentos */}
         </Route>
       </Routes>
