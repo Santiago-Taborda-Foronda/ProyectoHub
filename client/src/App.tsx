@@ -9,7 +9,8 @@ import AprendizDashboard from './pages/aprendiz/AprendizDashboard'
 import SolicitudProyecto from './pages/aprendiz/SolicitudProyecto'
 import Entregables from './pages/aprendiz/Entregables'
 import BancoProyectos from './pages/aprendiz/BancoProyectos'
-import MisProyectos from './pages/aprendiz/MisProyectos' // <-- Importar nueva vista
+import MisProyectos from './pages/aprendiz/MisProyectos'
+import PlanteamientoProblema from './pages/aprendiz/documentos/PlanteamientoProblema' // <-- Importar
 
 function App() {
   const userRole = 'aprendiz'
@@ -29,9 +30,13 @@ function App() {
           {/* Rutas de Aprendiz */}
           <Route path="aprendiz" element={<AprendizDashboard />} />
           <Route path="aprendiz/solicitud" element={<SolicitudProyecto />} />
-          <Route path="aprendiz/mis-proyectos" element={<MisProyectos />} /> {/* <-- Nueva ruta */}
+          <Route path="aprendiz/mis-proyectos" element={<MisProyectos />} />
           <Route path="aprendiz/entregables" element={<Entregables />} />
           <Route path="aprendiz/banco-proyectos" element={<BancoProyectos />} />
+          
+          {/* Rutas de documentos */}
+          <Route path="aprendiz/documento/planteamiento-problema" element={<PlanteamientoProblema />} />
+          {/* Aquí irán las demás rutas de documentos */}
         </Route>
       </Routes>
     </BrowserRouter>

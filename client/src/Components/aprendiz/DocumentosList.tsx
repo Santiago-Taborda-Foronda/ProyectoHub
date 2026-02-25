@@ -1,5 +1,6 @@
 // src/components/aprendiz/DocumentosList.tsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // <-- Importar useNavigate
 import { 
   FileText, 
   Download, 
@@ -7,14 +8,10 @@ import {
   MoreVertical,
   File,
   FileArchive,
-  Image,
-  Code,
-  BookOpen,
   CheckCircle,
   Clock,
   AlertCircle,
-  Search,
-  Filter
+  Search
 } from "lucide-react";
 
 // Datos de documentos basados en la estructura de Notion
@@ -28,6 +25,7 @@ const documentosData = [
     ultimaModificacion: "10/02/2026",
     modificadoPor: "Hector Rivera",
     tamaño: "1.2 MB",
+    ruta: "planteamiento-problema" // <-- Agregar ruta para navegación
   },
   {
     id: 2,
@@ -38,6 +36,7 @@ const documentosData = [
     ultimaModificacion: "08/02/2026",
     modificadoPor: "Fernando Alonso",
     tamaño: "2.5 MB",
+    ruta: "especificacion-requisitos"
   },
   {
     id: 3,
@@ -48,6 +47,7 @@ const documentosData = [
     ultimaModificacion: "05/02/2026",
     modificadoPor: "María Guzmán",
     tamaño: "1.8 MB",
+    ruta: "casos-uso"
   },
   {
     id: 4,
@@ -58,6 +58,7 @@ const documentosData = [
     ultimaModificacion: "01/02/2026",
     modificadoPor: "Hector Rivera",
     tamaño: "3.1 MB",
+    ruta: "informe-general"
   },
   {
     id: 5,
@@ -68,6 +69,7 @@ const documentosData = [
     ultimaModificacion: "28/01/2026",
     modificadoPor: "Alex Perea",
     tamaño: "4.2 MB",
+    ruta: "prototipado"
   },
   {
     id: 6,
@@ -78,6 +80,7 @@ const documentosData = [
     ultimaModificacion: "25/01/2026",
     modificadoPor: "Checo Pérez",
     tamaño: "1.5 MB",
+    ruta: "plan-pruebas"
   },
   {
     id: 7,
@@ -88,6 +91,7 @@ const documentosData = [
     ultimaModificacion: "20/01/2026",
     modificadoPor: "María Guzmán",
     tamaño: "0.9 MB",
+    ruta: "manual-config-bd"
   },
   {
     id: 8,
@@ -98,6 +102,7 @@ const documentosData = [
     ultimaModificacion: "15/01/2026",
     modificadoPor: "Fernando Alonso",
     tamaño: "2.8 MB",
+    ruta: "manual-tecnico"
   },
   {
     id: 9,
@@ -108,6 +113,7 @@ const documentosData = [
     ultimaModificacion: "10/01/2026",
     modificadoPor: "Alex Perea",
     tamaño: "3.3 MB",
+    ruta: "manual-usuario"
   },
   {
     id: 10,
@@ -118,6 +124,7 @@ const documentosData = [
     ultimaModificacion: "05/01/2026",
     modificadoPor: "Hector Rivera",
     tamaño: "8.5 MB",
+    ruta: "anexos"
   },
 ];
 
@@ -157,10 +164,11 @@ const getFileIcon = (tipo: string) => {
 };
 
 interface Props {
-  onOpenDocumento: (documento: any) => void;
+  onOpenDocumento?: (documento: any) => void; // Lo hacemos opcional por si aún se usa en otros lados
 }
 
 const DocumentosList: React.FC<Props> = ({ onOpenDocumento }) => {
+  const navigate = useNavigate(); // <-- Hook para navegación
   const [searchTerm, setSearchTerm] = useState("");
   const [filterEstado, setFilterEstado] = useState("todos");
 
@@ -173,6 +181,27 @@ const DocumentosList: React.FC<Props> = ({ onOpenDocumento }) => {
   });
 
   const estadosUnicos = ["todos", ...new Set(documentosData.map((doc) => doc.estado))];
+
+  const handleDocumentoClick = (doc: typeof documentosData[0]) => {
+    // Si existe la prop onOpenDocumento (por compatibilidad), la usamos
+    if (onOpenDocumento) {
+      onOpenDocumento(doc);
+    } else {
+      // Si no, navegamos a la página del documento
+      navigate(`/aprendiz/documento/${doc.ruta}`);
+    }
+  };
+
+  const handleVerClick = (e: React.MouseEvent, doc: typeof documentosData[0]) => {
+    e.stopPropagation(); // Evita que se active el click del contenedor
+    navigate(`/aprendiz/documento/${doc.ruta}`);
+  };
+
+  const handleDownloadClick = (e: React.MouseEvent, doc: typeof documentosData[0]) => {
+    e.stopPropagation();
+    // Lógica para descargar el documento
+    console.log("Descargando:", doc.nombre);
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200">
@@ -200,7 +229,7 @@ const DocumentosList: React.FC<Props> = ({ onOpenDocumento }) => {
             >
               {estadosUnicos.map((estado) => (
                 <option key={estado} value={estado}>
-                  {estado === "todos" ? "Todos" : estado}
+                  {estado === "todos" ? "Todos los estados" : estado}
                 </option>
               ))}
             </select>
@@ -217,8 +246,8 @@ const DocumentosList: React.FC<Props> = ({ onOpenDocumento }) => {
           return (
             <div
               key={doc.id}
-              className="p-4 hover:bg-gray-50 transition-colors cursor-pointer"
-              onClick={() => onOpenDocumento(doc)}
+              className="p-4 hover:bg-gray-50 transition-colors cursor-pointer group"
+              onClick={() => handleDocumentoClick(doc)}
             >
               <div className="flex items-start gap-3">
                 {getFileIcon(doc.tipo)}
@@ -232,7 +261,9 @@ const DocumentosList: React.FC<Props> = ({ onOpenDocumento }) => {
                     </span>
                   </div>
                   
-                  <h4 className="text-sm font-medium text-gray-800 mb-1">{doc.nombre}</h4>
+                  <h4 className="text-sm font-medium text-gray-800 mb-1 group-hover:text-blue-600 transition-colors">
+                    {doc.nombre}
+                  </h4>
                   
                   <div className="flex items-center gap-3 text-xs text-gray-500">
                     <span>Modificado: {doc.ultimaModificacion}</span>
@@ -243,14 +274,26 @@ const DocumentosList: React.FC<Props> = ({ onOpenDocumento }) => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1">
-                  <button className="p-1.5 hover:bg-gray-200 rounded-lg">
+                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button 
+                    className="p-1.5 hover:bg-gray-200 rounded-lg"
+                    onClick={(e) => handleVerClick(e, doc)}
+                    title="Ver documento"
+                  >
                     <Eye size={16} className="text-gray-500" />
                   </button>
-                  <button className="p-1.5 hover:bg-gray-200 rounded-lg">
+                  <button 
+                    className="p-1.5 hover:bg-gray-200 rounded-lg"
+                    onClick={(e) => handleDownloadClick(e, doc)}
+                    title="Descargar"
+                  >
                     <Download size={16} className="text-gray-500" />
                   </button>
-                  <button className="p-1.5 hover:bg-gray-200 rounded-lg">
+                  <button 
+                    className="p-1.5 hover:bg-gray-200 rounded-lg"
+                    onClick={(e) => e.stopPropagation()}
+                    title="Más opciones"
+                  >
                     <MoreVertical size={16} className="text-gray-500" />
                   </button>
                 </div>

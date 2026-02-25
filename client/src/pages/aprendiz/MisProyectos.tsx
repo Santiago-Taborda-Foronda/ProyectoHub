@@ -1,24 +1,30 @@
 // src/pages/aprendiz/MisProyectos.tsx
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom"; // <-- Importar useNavigate
 import ProyectoHeader from "../../Components/aprendiz/ProyectoHeader";
 import ProyectoStats from "../../Components/aprendiz/ProyectoStats";
 import DocumentosList from "../../Components/aprendiz/DocumentosList";
 import ActividadReciente from "../../Components/aprendiz/ActividadReciente";
-import DocumentoModal from "../../Components/aprendiz/DocumentoModal";
+// Eliminamos la importación del modal que ya no se usa
+// import DocumentoModal from "../../Components/aprendiz/DocumentoModal";
 
 const MisProyectos: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedDocumento, setSelectedDocumento] = useState<any>(null);
+  const navigate = useNavigate(); // <-- Hook para navegación
+  
+  // Eliminamos el estado del modal
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [selectedDocumento, setSelectedDocumento] = useState<any>(null);
 
+  // Actualizamos la función para navegar a la página del documento
   const handleOpenDocumento = (documento: any) => {
-    setSelectedDocumento(documento);
-    setModalOpen(true);
+    navigate(`/aprendiz/documento/${documento.ruta}`);
   };
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setSelectedDocumento(null);
-  };
+  // Eliminamos la función del modal
+  // const handleCloseModal = () => {
+  //   setModalOpen(false);
+  //   setSelectedDocumento(null);
+  // };
 
   // Datos del proyecto (ejemplo)
   const proyectoData = {
@@ -67,13 +73,13 @@ const MisProyectos: React.FC = () => {
         </div>
       </div>
 
-      {/* Modal de documento */}
-      {modalOpen && (
+      {/* Eliminamos el modal que ya no se usa */}
+      {/* {modalOpen && (
         <DocumentoModal
           documento={selectedDocumento}
           onClose={handleCloseModal}
         />
-      )}
+      )} */}
     </div>
   );
 };
