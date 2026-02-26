@@ -12,6 +12,7 @@ import BancoProyectos from './pages/aprendiz/BancoProyectos'
 import MisProyectos from './pages/aprendiz/MisProyectos'
 import PlanteamientoProblema from './pages/aprendiz/documentos/PlanteamientoProblema' // <-- Importar
 import EspecificacionRequisitos from './pages/aprendiz/documentos/EspecificacionRequisitos';
+import HistorialActividad from './pages/aprendiz/HistorialActividad';
 
 function App() {
   const userRole = 'aprendiz'
@@ -34,6 +35,7 @@ function App() {
           <Route path="aprendiz/mis-proyectos" element={<MisProyectos />} />
           <Route path="aprendiz/entregables" element={<Entregables />} />
           <Route path="aprendiz/banco-proyectos" element={<BancoProyectos />} />
+          <Route path="aprendiz/historial-actividad" element={<HistorialActividad />} />
           
           {/* Rutas de documentos */}
           <Route path="aprendiz/documento/planteamiento-problema" element={<PlanteamientoProblema />} />

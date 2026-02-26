@@ -1,5 +1,6 @@
 // src/components/aprendiz/ActividadReciente.tsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Clock, User, FileText, Image, Code, MoreHorizontal } from "lucide-react";
 
 const actividadesData = [
@@ -60,6 +61,8 @@ const getIcono = (tipo: string) => {
 };
 
 const ActividadReciente: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200">
       <div className="p-4 border-b border-gray-200">
@@ -67,7 +70,7 @@ const ActividadReciente: React.FC = () => {
       </div>
 
       <div className="divide-y divide-gray-200">
-        {actividadesData.map((act) => (
+        {actividadesData.slice(0, 3).map((act) => ( // Solo mostrar 3 en el dashboard
           <div key={act.id} className="p-4 hover:bg-gray-50 transition-colors">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-medium text-sm">
@@ -101,7 +104,10 @@ const ActividadReciente: React.FC = () => {
       </div>
 
       <div className="p-3 border-t border-gray-200">
-        <button className="w-full text-center text-sm text-blue-600 hover:text-blue-800 hover:underline">
+        <button 
+          onClick={() => navigate("/aprendiz/historial-actividad")}
+          className="w-full text-center text-sm text-blue-600 hover:text-blue-800 hover:underline"
+        >
           Ver toda la actividad
         </button>
       </div>
